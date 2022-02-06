@@ -5,16 +5,31 @@ from apps.abstract.models import AbstractModel, AbstractManager
 
 class UserManager(BaseUserManager, AbstractManager):
 
-    def create_user(self, first_name, last_name, password, email, **extra_fields):
+    def create_user(self, username, first_name, last_name, password, email, **extra_fields):
 
-        user = self.model(email=email, first_name=first_name, last_name=last_name, **extra_fields)
+        if email is None:
+            raise TypeError("User must have a phone phone")
+
+        if first_name is None:
+            raise TypeError("User must have a first name")
+
+        if last_name is None:
+            raise TypeError("User must have a last name")
+
+        if password is None:
+            raise TypeError("You should put a password")
+
+        if username is None:
+            raise TypeError("You should put a username")
+
+        user = self.model(username=username, email=email, first_name=first_name, last_name=last_name, **extra_fields)
         user.set_password(password)
         user.save()
         return user
 
-    def create_superuser(self, first_name, last_name, password, email, **extra_fields):
+    def create_superuser(self, username, first_name, last_name, password, email, **extra_fields):
 
-        user = self.create_user(first_name, last_name, password, email, **extra_fields)
+        user = self.create_user(username, first_name, last_name, password, email, **extra_fields)
         user.is_superuser = True
         user.is_staff = True
         user.save()
