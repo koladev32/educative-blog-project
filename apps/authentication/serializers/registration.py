@@ -4,7 +4,7 @@ from apps.user.serializers import UserSerializer
 from apps.user.models import User
 
 
-class RegisterSerializer(UserSerializer):
+class RegistrationSerializer(UserSerializer):
     """
     Registration serializer for requests and user creation
     """
