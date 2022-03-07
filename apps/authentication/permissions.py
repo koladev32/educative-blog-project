@@ -1,9 +1,9 @@
 from rest_framework.permissions import BasePermission, SAFE_METHODS
 
 
-class ArticlePermission(BasePermission):
+class UserPermission(BasePermission):
     """
-    Custom permissions for Article Resource
+    Custom permissions for User Resource
     """
     def has_permission(self, request, view):
         if view.basename in ["article"]:
