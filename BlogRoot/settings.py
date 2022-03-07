@@ -41,7 +41,8 @@ INSTALLED_APPS = [
     'rest_framework',
 
     'apps',
-    'apps.user'
+    'apps.user',
+    'apps.article'
 ]
 
 
