@@ -42,7 +42,8 @@ INSTALLED_APPS = [
 
     'apps',
     'apps.user',
-    'apps.article'
+    'apps.article',
+    'apps.comment'
 ]
 
 
