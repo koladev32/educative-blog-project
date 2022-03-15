@@ -11,10 +11,10 @@ class CommentSerializer(AbstractSerializer):
     author = serializers.SlugRelatedField(queryset=User.objects.all(), slug_field='public_id')
     article = serializers.SlugRelatedField(queryset=Article.objects.all(), slug_field='public_id')
 
-    def validate_author(self, value):
-        if self.context["request"].user != value:
-            raise ValidationError("You can't create a comment for another user.")
-        return value
+    # def validate_author(self, value):
+    #     if self.context["request"].user != value:
+    #         raise ValidationError("You can't create a comment for another user.")
+    #     return value
 
     def validate_article(self, value):
         if self.instance:
