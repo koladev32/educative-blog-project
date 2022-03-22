@@ -1,6 +1,7 @@
 from rest_framework_nested import routers
 from apps.authentication.viewsets import RegistrationViewSet, LoginViewSet
 from apps.article.viewsets import ArticleViewSet
+from apps.comment.viewsets import CommentViewSet
 
 router = routers.SimpleRouter()
 
@@ -22,7 +23,7 @@ router.register(r'article', ArticleViewSet, basename='article')
 # ##################################################################### #
 
 article_router = routers.NestedSimpleRouter(router, r'article', lookup='article')
-# Add the comment route
+article_router.register(r'comment', CommentViewSet, basename='article-comment')
 
 urlpatterns = [
     *router.urls,
