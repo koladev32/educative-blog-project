@@ -3,7 +3,7 @@ import pytest
 from apps.user.models import User
 
 
-@pytest.djanog_db
+@pytest.mark.djanog_db
 def test_user_creation(db):
     user = User.objects.create_user(
         username='test',
